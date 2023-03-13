@@ -27,7 +27,7 @@ namespace PayrollProcess.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=sql2014;Initial Catalog=CTRCTSPayrollDB;Integrated Security=False;Con" +
-            "nect Timeout=30;UID=PayrollApp;PWD=RQkTuemu;")]
+            "nect Timeout=30;UID=payrollDB;PWD=Payroll2023;")]
         public string CTRCTSPayrollDBConnectionString1 {
             get {
                 return ((string)(this["CTRCTSPayrollDBConnectionString1"]));
