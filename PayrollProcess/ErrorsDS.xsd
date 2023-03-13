@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ErrorsDS" targetNamespace="http://tempuri.org/ErrorsDS.xsd" xmlns:mstns="http://tempuri.org/ErrorsDS.xsd" xmlns="http://tempuri.org/ErrorsDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="CTRCTSPayrollDBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="CTRCTSPayrollDBConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.PayrollProcess.Properties.Settings.GlobalReference.Default.CTRCTSPayrollDBConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ErrorsDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ErrorsDS" msprop:Generator_UserDSName="ErrorsDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TSException" msprop:Generator_TableClassName="TSExceptionDataTable" msprop:Generator_TableVarName="tableTSException" msprop:Generator_TablePropName="TSException" msprop:Generator_RowDeletingName="TSExceptionRowDeleting" msprop:Generator_RowChangingName="TSExceptionRowChanging" msprop:Generator_RowEvHandlerName="TSExceptionRowChangeEventHandler" msprop:Generator_RowDeletedName="TSExceptionRowDeleted" msprop:Generator_UserTableName="TSException" msprop:Generator_RowChangedName="TSExceptionRowChanged" msprop:Generator_RowEvArgName="TSExceptionRowChangeEvent" msprop:Generator_RowClassName="TSExceptionRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TimesheetID" msprop:Generator_ColumnVarNameInTable="columnTimesheetID" msprop:Generator_ColumnPropNameInRow="TimesheetID" msprop:Generator_ColumnPropNameInTable="TimesheetIDColumn" msprop:Generator_UserColumnName="TimesheetID" type="xs:int" />
+              <xs:element name="Field" msprop:Generator_ColumnVarNameInTable="columnField" msprop:Generator_ColumnPropNameInRow="Field" msprop:Generator_ColumnPropNameInTable="FieldColumn" msprop:Generator_UserColumnName="Field" type="xs:string" />
+              <xs:element name="Exception" msprop:Generator_ColumnVarNameInTable="columnException" msprop:Generator_ColumnPropNameInRow="Exception" msprop:Generator_ColumnPropNameInTable="ExceptionColumn" msprop:Generator_UserColumnName="Exception" type="xs:string" minOccurs="0" />
+              <xs:element name="Filename" msprop:Generator_ColumnVarNameInTable="columnFilename" msprop:Generator_ColumnPropNameInRow="Filename" msprop:Generator_ColumnPropNameInTable="FilenameColumn" msprop:Generator_UserColumnName="Filename" type="xs:string" minOccurs="0" />
+              <xs:element name="Error_elseWarning" msprop:Generator_ColumnVarNameInTable="columnError_elseWarning" msprop:Generator_ColumnPropNameInRow="Error_elseWarning" msprop:Generator_ColumnPropNameInTable="Error_elseWarningColumn" msprop:Generator_UserColumnName="Error_elseWarning" type="xs:boolean" minOccurs="0" />
+              <xs:element name="EmpIdent" msprop:Generator_ColumnVarNameInTable="columnEmpIdent" msprop:Generator_ColumnPropNameInRow="EmpIdent" msprop:Generator_ColumnPropNameInTable="EmpIdentColumn" msprop:Generator_UserColumnName="EmpIdent" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Tab" msprop:Generator_ColumnVarNameInTable="columnTab" msprop:Generator_ColumnPropNameInRow="Tab" msprop:Generator_ColumnPropNameInTable="TabColumn" msprop:Generator_UserColumnName="Tab" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EmpNo" msprop:Generator_ColumnVarNameInTable="columnEmpNo" msprop:Generator_ColumnPropNameInRow="EmpNo" msprop:Generator_ColumnPropNameInTable="EmpNoColumn" msprop:Generator_UserColumnName="EmpNo" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TSException" />
+      <xs:field xpath="mstns:TimesheetID" />
+      <xs:field xpath="mstns:Field" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

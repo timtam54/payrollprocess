@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CTRCTSPayrollDB" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=CTRCTSPayrollDB;Integrated Security=True" SettingsObjectName="PayrollProcess.Properties.Settings" SettingsPropertyName="CTRCTSPayrollDBConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Jobs" Member="Jobs">
+    <Type Name="Job">
+      <Column Name="JobCode" Type="System.String" DbType="NVarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="JobDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Class" Member="Classes">
+    <Type Name="Class">
+      <Column Name="PCSClassNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Emp_Condition" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GradeCodeID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LevelCodeID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HoursPerFN" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="AmountPerFN" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PYCLASS_CLASSCODE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PYCLASS_CLASSDESC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EmpTypeTimeCode" Member="EmpTypeTimeCodes">
+    <Type Name="EmpTypeTimeCode">
+      <Column Name="TimeCode" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EmpType" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Plant" Member="Plants">
+    <Type Name="Plant">
+      <Column Name="PlantSource" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PlantTarget" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PlantDesc" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Timesheets" Member="Timesheets">
+    <Type Name="Timesheet">
+      <Column Name="TimesheetID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StaffID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PayNoYear" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="filename" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="PayYear_Timesheet" Member="PayYear" ThisKey="PayNoYear" OtherKey="PayNoYear" Type="PayYear" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PayComponent" Member="PayComponents">
+    <Type Name="PayComponent">
+      <Column Name="PayCompCode" Type="System.Decimal" DbType="Decimal(18,1) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PayCompDesc" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="PayCompType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PayCompTypeDesc" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Payment_deduct" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Units" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PayPeriodUnit" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employees" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="T1EmpNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Emp_Type" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Hours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Settings" Member="Settings">
+    <Type Name="Setting">
+      <Column Name="SettingCode" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SettingDesc" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Vals" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimesheetData" Member="TimesheetDatas">
+    <Type Name="TimesheetData">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="job" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="start_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="end_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TimesheetID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ClassNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AllowanceCode" Type="System.Decimal" DbType="Decimal(18,1) NOT NULL" CanBeNull="false" />
+      <Column Name="TImeCode" Type="System.Decimal" DbType="Decimal(18,1)" CanBeNull="true" />
+      <Column Name="PlantNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Row" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Source" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Emp_Allowances" Member="Emp_Allowances">
+    <Type Name="Emp_Allowance">
+      <Column Name="T1_EmpID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PayComponentCode" Type="System.Decimal" DbType="Decimal(10,1) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="units" Type="System.Decimal" DbType="Decimal(6,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TSException" Member="TSExceptions">
+    <Type Name="TSException">
+      <Column Name="TimesheetID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Field" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Exception" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Error_elseWarning" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EmpIdent" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Tab" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="EmpNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PayYear" Member="PayYears">
+    <Type Name="PayYear">
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PayNoYear" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Association Name="PayYear_Timesheet" Member="Timesheets" ThisKey="PayNoYear" OtherKey="PayNoYear" Type="Timesheet" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EventLog" Member="EventLogs">
+    <Type Name="EventLog">
+      <Column Name="EventLogID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EventDT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Error" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="EventGroup" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="TabSheet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

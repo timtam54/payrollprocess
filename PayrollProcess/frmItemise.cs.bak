@@ -1,0 +1,125 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace PayrollProcess
+{
+    public partial class frmItemise : Form
+    {
+
+        public frmItemise(JobCostHoursPivotDS jb,string T1EmpNo,decimal T1PayComp)
+        {
+            InitializeComponent();
+            WindowState = FormWindowState.Maximized;
+            var jl = jb.DataTable1.Select("T1EmpNo = " + T1EmpNo + " and T1PayComp =" + T1PayComp.ToString());
+            {
+                JobCostHoursPivotDS.Merge(jl);
+            }
+            AddCat();
+        }
+
+
+        void AddCat()
+        {
+            foreach (JobCostHoursPivotDS.DataTable1Row item in JobCostHoursPivotDS.DataTable1)
+            {
+                if (item.Leave)
+                    item.EmploymentConditionLevel = "Leave";
+                else if (!IsOvertime(item.T1PayComp))
+                    item.EmploymentConditionLevel = "Ordinary";
+                else
+                    item.EmploymentConditionLevel = "Overtime";
+            }
+        }
+
+        DataClasses1DataContext db = new DataClasses1DataContext();
+        bool IsOvertime(decimal T1PayCompCode)
+        {
+            var payc = db.PayComponents.Where(pc => pc.PayCompCode == T1PayCompCode).FirstOrDefault();
+            return (payc.PayCompTypeDesc == "Overtime");
+        }
+
+        public frmItemise(JobCostHoursPivotDS jb, string T1EmpNo, string T1PayCompType)
+        {
+            InitializeComponent();
+            WindowState = FormWindowState.Maximized;
+            if (T1PayCompType == "All")
+            {
+                var jl = jb.DataTable1.Select("T1EmpNo = " + T1EmpNo);
+                JobCostHoursPivotDS.Merge(jl);
+                AddCat();
+
+                return;
+            }
+            if (T1PayCompType == "Ordinary")
+            {
+                var jl = jb.DataTable1.Select("T1EmpNo = " + T1EmpNo);
+                {
+                    foreach (JobCostHoursPivotDS.DataTable1Row item in jl)
+                    {
+                        if (item.Leave)
+                            ;
+                        else if (!IsOvertime(item.T1PayComp))
+                        {
+                            item.EmploymentConditionLevel = "Ordinary";
+                            JobCostHoursPivotDS.DataTable1Row[] items = new JobCostHoursPivotDS.DataTable1Row[] { item };
+                            JobCostHoursPivotDS.Merge( items );
+                        }
+                    }
+                }
+                return;
+            }
+            if (T1PayCompType == "Overtime")
+            {
+                var jl = jb.DataTable1.Select("T1EmpNo = " + T1EmpNo);
+                {
+                    foreach (JobCostHoursPivotDS.DataTable1Row item in jl)
+                    {
+                        if (item.Leave)
+                            ;
+                        else if (IsOvertime(item.T1PayComp))
+                        {
+                            item.EmploymentConditionLevel = "Overtime";
+
+                            JobCostHoursPivotDS.DataTable1Row[] items = new JobCostHoursPivotDS.DataTable1Row[] { item };
+
+                            JobCostHoursPivotDS.Merge(items);
+                        }
+                    }
+                }
+                return;
+            }
+            if (T1PayCompType == "Leave")
+            {
+                var jl = jb.DataTable1.Select("T1EmpNo = " + T1EmpNo);
+                {
+                    foreach (JobCostHoursPivotDS.DataTable1Row item in jl)
+                    {
+                        if (item.Leave)
+                        {
+                            item.EmploymentConditionLevel = "Leave";
+
+                            JobCostHoursPivotDS.DataTable1Row[] items = new JobCostHoursPivotDS.DataTable1Row[] { item };
+
+                            JobCostHoursPivotDS.Merge(items);
+                        }
+                    }
+                }
+                return;
+            }
+
+        }
+
+        private void frmItemise_Load(object sender, EventArgs e)
+        {
+
+            this.reportViewer1.RefreshReport();
+        }
+    }
+}

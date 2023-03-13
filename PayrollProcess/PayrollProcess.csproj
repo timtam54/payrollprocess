@@ -1,0 +1,621 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{259EA40A-8855-4120-85F6-F31CF31F7FF1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PayrollProcess</RootNamespace>
+    <AssemblyName>PayrollProcess</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.95.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.95.4\lib\net46\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.0.10.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.0.10\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.0.1\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.0.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataClasses1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorsDS.Designer.cs">
+      <DependentUpon>ErrorsDS.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="ExcelImportDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExcelImportDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClass.Designer.cs">
+      <DependentUpon>frmClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmp.Designer.cs">
+      <DependentUpon>frmEmp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpAllow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpAllow.Designer.cs">
+      <DependentUpon>frmEmpAllow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpJobCodes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpJobCodes.Designer.cs">
+      <DependentUpon>frmEmpJobCodes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEvents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEvents.Designer.cs">
+      <DependentUpon>frmEvents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExcel.Designer.cs">
+      <DependentUpon>frmExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmException.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmException.Designer.cs">
+      <DependentUpon>frmException.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFilter.Designer.cs">
+      <DependentUpon>frmFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHelp.Designer.cs">
+      <DependentUpon>frmHelp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImpClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImpClass.Designer.cs">
+      <DependentUpon>frmImpClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImpEmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImpEmp.Designer.cs">
+      <DependentUpon>frmImpEmp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImpEmpAllow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImpEmpAllow.Designer.cs">
+      <DependentUpon>frmImpEmpAllow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImpJob.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImpJob.Designer.cs">
+      <DependentUpon>frmImpJob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImpPayComp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImpPayComp.Designer.cs">
+      <DependentUpon>frmImpPayComp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImpPlant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImpPlant.Designer.cs">
+      <DependentUpon>frmImpPlant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmItemise.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmItemise.Designer.cs">
+      <DependentUpon>frmItemise.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmItemiseTran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmItemiseTran.Designer.cs">
+      <DependentUpon>frmItemiseTran.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmJobCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmJobCode.Designer.cs">
+      <DependentUpon>frmJobCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLedgerEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLedgerEdit.Designer.cs">
+      <DependentUpon>frmLedgerEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLedgerJobNoMapping.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLedgerJobNoMapping.Designer.cs">
+      <DependentUpon>frmLedgerJobNoMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPayComp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPayComp.Designer.cs">
+      <DependentUpon>frmPayComp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPayPeriod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPayPeriod.Designer.cs">
+      <DependentUpon>frmPayPeriod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPeriod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPeriod.Designer.cs">
+      <DependentUpon>frmPeriod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPeriodEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPeriodEdit.Designer.cs">
+      <DependentUpon>frmPeriodEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlant.Designer.cs">
+      <DependentUpon>frmPlant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlantJobDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlantJobDate.Designer.cs">
+      <DependentUpon>frmPlantJobDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlantList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlantList.Designer.cs">
+      <DependentUpon>frmPlantList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlantUnattached.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlantUnattached.Designer.cs">
+      <DependentUpon>frmPlantUnattached.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportT1PayImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportT1PayImport.Designer.cs">
+      <DependentUpon>frmReportT1PayImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReport.Designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSettings.Designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSettingsEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSettingsEdit.Designer.cs">
+      <DependentUpon>frmSettingsEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStaffMIssing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStaffMIssing.Designer.cs">
+      <DependentUpon>frmStaffMIssing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSummaryHours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSummaryHours.Designer.cs">
+      <DependentUpon>frmSummaryHours.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT1ImpSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT1ImpSummary.Designer.cs">
+      <DependentUpon>frmT1ImpSummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT1PayCompPivot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT1PayCompPivot.Designer.cs">
+      <DependentUpon>frmT1PayCompPivot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT1PayCompPivotMatrix.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT1PayCompPivotMatrix.Designer.cs">
+      <DependentUpon>frmT1PayCompPivotMatrix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmValidation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmValidation.Designer.cs">
+      <DependentUpon>frmValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JobCostHoursPivotDS.cs">
+      <DependentUpon>JobCostHoursPivotDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="JobCostHoursPivotDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JobCostHoursPivotDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="LedgerJob.cs" />
+    <Compile Include="MainDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T1_TS_ImportTmp.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="T1SumDS.cs">
+      <DependentUpon>T1SumDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="T1SumDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T1SumDS.xsd</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ErrorRpt.rdlc" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClass.resx">
+      <DependentUpon>frmClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmp.resx">
+      <DependentUpon>frmEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpAllow.resx">
+      <DependentUpon>frmEmpAllow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpJobCodes.resx">
+      <DependentUpon>frmEmpJobCodes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEvents.resx">
+      <DependentUpon>frmEvents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExcel.resx">
+      <DependentUpon>frmExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmException.resx">
+      <DependentUpon>frmException.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFilter.resx">
+      <DependentUpon>frmFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHelp.resx">
+      <DependentUpon>frmHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImpClass.resx">
+      <DependentUpon>frmImpClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImpEmp.resx">
+      <DependentUpon>frmImpEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImpEmpAllow.resx">
+      <DependentUpon>frmImpEmpAllow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImpJob.resx">
+      <DependentUpon>frmImpJob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImpPayComp.resx">
+      <DependentUpon>frmImpPayComp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImpPlant.resx">
+      <DependentUpon>frmImpPlant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmItemise.resx">
+      <DependentUpon>frmItemise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmItemiseTran.resx">
+      <DependentUpon>frmItemiseTran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmJobCode.resx">
+      <DependentUpon>frmJobCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLedgerEdit.resx">
+      <DependentUpon>frmLedgerEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLedgerJobNoMapping.resx">
+      <DependentUpon>frmLedgerJobNoMapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPayComp.resx">
+      <DependentUpon>frmPayComp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPayPeriod.resx">
+      <DependentUpon>frmPayPeriod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPeriod.resx">
+      <DependentUpon>frmPeriod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPeriodEdit.resx">
+      <DependentUpon>frmPeriodEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlant.resx">
+      <DependentUpon>frmPlant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlantJobDate.resx">
+      <DependentUpon>frmPlantJobDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlantList.resx">
+      <DependentUpon>frmPlantList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlantUnattached.resx">
+      <DependentUpon>frmPlantUnattached.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportT1PayImport.resx">
+      <DependentUpon>frmReportT1PayImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReport.resx">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSettingsEdit.resx">
+      <DependentUpon>frmSettingsEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStaffMIssing.resx">
+      <DependentUpon>frmStaffMIssing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSummaryHours.resx">
+      <DependentUpon>frmSummaryHours.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT1ImpSummary.resx">
+      <DependentUpon>frmT1ImpSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT1PayCompPivot.resx">
+      <DependentUpon>frmT1PayCompPivot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT1PayCompPivotMatrix.resx">
+      <DependentUpon>frmT1PayCompPivotMatrix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmValidation.resx">
+      <DependentUpon>frmValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlantRpt.rdlc" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="RptItemise.rdlc" />
+    <EmbeddedResource Include="rptLedgerJob.rdlc" />
+    <EmbeddedResource Include="RptPaycompMatrix.rdlc" />
+    <EmbeddedResource Include="RptPaycomp.rdlc" />
+    <EmbeddedResource Include="rptSumHours.rdlc" />
+    <EmbeddedResource Include="T!Import - Copy %282%29.rdlc" />
+    <EmbeddedResource Include="T!Import - Copy.rdlc" />
+    <EmbeddedResource Include="T!Import.rdlc" />
+    <EmbeddedResource Include="T1ImpSummary.rdlc" />
+    <EmbeddedResource Include="TimesheetJobNo.rdlc" />
+    <None Include="DataClasses1.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataClasses1.dbml.layout">
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </None>
+    <None Include="ErrorsDS.xsc">
+      <DependentUpon>ErrorsDS.xsd</DependentUpon>
+    </None>
+    <None Include="ErrorsDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ErrorsDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ErrorsDS.xss">
+      <DependentUpon>ErrorsDS.xsd</DependentUpon>
+    </None>
+    <None Include="ExcelImportDS.xsc">
+      <DependentUpon>ExcelImportDS.xsd</DependentUpon>
+    </None>
+    <None Include="ExcelImportDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExcelImportDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ExcelImportDS.xss">
+      <DependentUpon>ExcelImportDS.xsd</DependentUpon>
+    </None>
+    <None Include="JobCostHoursPivotDS.xsc">
+      <DependentUpon>JobCostHoursPivotDS.xsd</DependentUpon>
+    </None>
+    <None Include="JobCostHoursPivotDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>JobCostHoursPivotDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="JobCostHoursPivotDS.xss">
+      <DependentUpon>JobCostHoursPivotDS.xsd</DependentUpon>
+    </None>
+    <None Include="MainDS.xsc">
+      <DependentUpon>MainDS.xsd</DependentUpon>
+    </None>
+    <None Include="MainDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MainDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="MainDS.xss">
+      <DependentUpon>MainDS.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\frmEmpJobCodes.EmpNoFilename.datasource" />
+    <None Include="Properties\DataSources\frmLedgerJobNoMapping.JobLedger.datasource" />
+    <None Include="Properties\DataSources\frmPlant.PlantData.datasource" />
+    <None Include="Properties\DataSources\frmSummaryHours.SumHour.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="T1SumDS.xsc">
+      <DependentUpon>T1SumDS.xsd</DependentUpon>
+    </None>
+    <None Include="T1SumDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>T1SumDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="T1SumDS.xss">
+      <DependentUpon>T1SumDS.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Configure1.png" />
+    <None Include="Configure2.png" />
+    <Content Include="PayrollProcess.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
