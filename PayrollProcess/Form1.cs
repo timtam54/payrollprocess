@@ -7,6 +7,7 @@ using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -47,7 +48,7 @@ namespace PayrollProcess
 
         static void RunScripts()
         {
-            ExecSQL("CREATE NONCLUSTERED INDEX IX_TimesheetData ON dbo.TimesheetData ( TimesheetID ) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]");
+            ExecSQL("ALTER TABLE TSException ALTER COLUMN Exception nVARCHAR (1800)  NULL;");
         }
 
         public static void ExecSQL(string sql)
@@ -1139,9 +1140,18 @@ namespace PayrollProcess
         {
             get
             {
+                //var xx = System.Configuration.ConfigurationManager.ConnectionStrings["CTRCTSPayrollDBConnectionString1"].ConnectionString;
+
                 if (_ConString == null)
-                    _ConString = "Data Source=.;Initial Catalog=CTRCTSPayrollDB;Integrated Security=true;";
-            //        _ConString= Properties.Settings.Default.CTRCTSPayrollDBConnectionString1;
+                    _ConString = Properties.Settings.Default.CTRCTSPayrollDBConnectionString1;
+                //{
+                //    Assembly service = Assembly.GetExecutingAssembly();
+                //    ConnectionStringsSection css = ConfigurationManager.OpenExeConfiguration(service.Location).ConnectionStrings;
+                //    string cs = css.ConnectionStrings["PayrollProcess.Properties.Settings.CTRCTSPayrollDBConnectionString1"].ConnectionString;
+                //}
+                //    _ConString = "Data Source=.;Initial Catalog=CTRCTSPayrollDB;Integrated Security=true;";
+
+              //  _ConString = Properties.Settings.Default.CTRCTSPayrollDBConnectionString1;
                 return _ConString;
             }
         }
@@ -1402,7 +1412,7 @@ namespace PayrollProcess
         delegate void SetTitleTabDel(string Title, string Tab);
 
         string tsbTabNameText = ".";
-        void SetTitleTab(string Title,string Tab)
+        void SetTitleTab(string Title, string Tab)
         {
 
             try
@@ -1414,15 +1424,12 @@ namespace PayrollProcess
                     if (Tab != null)
                         tsbTabName.Text = Tab;
                 }));
-                  
+
             }
             catch (Exception ex)
             {
                 ;
             }
-
-              
-
         }
 
         Guid EventGroup;
@@ -1449,15 +1456,8 @@ namespace PayrollProcess
                 }
             }
         }
-        /// <summary>
-        /// add error to error table - display error table once finished timesheet import
-        /// </summary>
-        /// <param name="timesheetid"></param>
-        /// <param name="EmpIdent"></param>
-        /// <param name="field"></param>
-        /// <param name="error"></param>
-        /// <param name="Error_elseWarning"></param>
-        /// <param name="filename"></param>
+
+
         private void Exception(int timesheetid, string EmpIdent, string field, string error, bool Error_elseWarning, string filename, frmExcel.Plant_TS123 tsno)
         {
             try
@@ -1468,7 +1468,6 @@ namespace PayrollProcess
                     Timesheet tt;
                     var staffid = db.Timesheets.Where(ts => ts.PayNoYear == PayNo).Select(ts => ts.StaffID).Min();//.FirstOrDefault();
                     staffid -= 1;
- //                   if (tsid == null)
                     {
                         tt = new Timesheet();
                         tt.StaffID = staffid;
@@ -1481,17 +1480,30 @@ namespace PayrollProcess
                 }
                 //     else
                 {
-                    if (!db.TSExceptions.Any(tse => tse.TimesheetID == timesheetid && tse.Field == field))
+                    var excep = db.TSExceptions.Where(tse => tse.TimesheetID == timesheetid && tse.Field == field).FirstOrDefault();
+                    if (excep != null)
+                    {
+                        if (!excep.Exception.ToLower().Contains(error.ToLower()))
+                        {
+                            string result = excep.Exception + ", " + error;
+                            if (result.Length < 1800)
+                            {
+                                excep.Exception = result;
+                                db.SubmitChanges();
+                            }
+                        }
+                    }
+                    else
                     {
                         TSException x = new TSException();
                         x.TimesheetID = timesheetid;
                         x.Field = field;
                         x.Exception = error;
                         x.EmpNo = EmpNo;
-                        if (tsno==null)
+                        if (tsno == null)
                             x.Tab = tsbTabNameText.Replace("'", "");
                         else
-                            x.Tab = tsbTabNameText.Replace("'","") + "/" + tsno.ToString();
+                            x.Tab = tsbTabNameText.Replace("'", "") + "/" + tsno.ToString();
                         if (EmpIdent.Contains("\\") || EmpIdent.Contains(".xlsx"))
                         {
                             EmpIdent = EmpIdent.Substring(EmpIdent.LastIndexOf('\\') + 1);
@@ -2175,7 +2187,7 @@ namespace PayrollProcess
         }
 
         static bool DataRead;
-        public string PlantSuffix = "900";
+        public int PlantSuffix = 9000000;
         private void ImportMigrate(frmExcel.Plant_TS123 Plant_TS, double TotalHours, string filename)
         {
             if (excelImportDS1.Excel.Count == 0)
@@ -2215,11 +2227,13 @@ namespace PayrollProcess
                         int AllowCode = 0;
                         int PlantNo = 0;
                         string jobcode = exrow[HIJobCodes.SelectedColumn].ToString();
+                        if (jobcode == "9012145")
+                            jobcode = "9012145";
                         if (jobcode != "")
                         {
                             if ((db.Jobs.Count(i => i.JobCode == jobcode) == 0) && (db.Jobs.Count() > 0))
                             {
-                                Exception(ts.TimesheetID, staff.FirstName + " " + staff.Surname, "JobCodes", "JobCodes table does not contain an entry for " + jobcode, true, filename, Plant_TS);
+                                Exception(ts.TimesheetID, staff.FirstName + " " + staff.Surname, "JobCodes", "JobCodes/Workorders table does not contain an entry for " + jobcode, true, filename, Plant_TS);
                             }
                         }
                         if (Plant_TS == frmExcel.Plant_TS123.Plant)
@@ -2233,7 +2247,7 @@ namespace PayrollProcess
                             {
                                 if (PlantNo != 0)
                                 {
-                                    if ((db.Plants.Count(i => i.PlantSource == PlantSuffix + PlantNo.ToString()) == 0))// && (db.Plants.Count() > 0))
+                                    if ((db.Plants.Count(i => i.PlantSource == (PlantSuffix + PlantNo).ToString()) == 0))// && (db.Plants.Count() > 0))
                                     {
                                         //todotim
                                         Exception(ts.TimesheetID, staff.FirstName + " " + staff.Surname, "plantno", "plantno table does not contain code " + PlantNo.ToString(), true, filename, Plant_TS);
@@ -2688,21 +2702,28 @@ namespace PayrollProcess
         {
             if (hour != 0)
             {
-                DataRead = true;
-                TimesheetData tsd = new TimesheetData();
-                tsd.TimesheetID = TimesheetID;
-                tsd.Source = source;
-                tsd.job = jobcode;
-                tsd.ClassNo = ClassNo;
-                tsd.AllowanceCode = AllowCode;
-                tsd.Row = rowid;
+                try
+                {
+                    DataRead = true;
+                    TimesheetData tsd = new TimesheetData();
+                    tsd.TimesheetID = TimesheetID;
+                    tsd.Source = source;
+                    tsd.job = jobcode;
+                    tsd.ClassNo = ClassNo;
+                    tsd.AllowanceCode = AllowCode;
+                    tsd.Row = rowid;
 
-                tsd.start_date = StartDate.Date.AddDays(dayind);
-                tsd.end_date = tsd.start_date.AddHours(hour);
-                tsd.TImeCode = TimeCode;
-                tsd.Description = Desc;
-                db.TimesheetDatas.InsertOnSubmit(tsd);
-                db.SubmitChanges();
+                    tsd.start_date = StartDate.Date.AddDays(dayind);
+                    tsd.end_date = tsd.start_date.AddHours(hour);
+                    tsd.TImeCode = TimeCode;
+                    tsd.Description = Desc;
+                    db.TimesheetDatas.InsertOnSubmit(tsd);
+                    db.SubmitChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
 
@@ -2978,6 +2999,7 @@ namespace PayrollProcess
             set
             {
                 var sets = db.Settings.Where(st => st.SettingCode == "ElectronicTimesheetFile").FirstOrDefault();
+                int xx=value.Length;
                 sets.Vals = value;
                 db.SubmitChanges();
                 _ElectronicTimesheetFile = value;

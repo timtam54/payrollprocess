@@ -29,6 +29,8 @@ namespace PayrollProcess
         {
             var emp = db.Jobs.ToList();
             dataGridView1.DataSource = emp;
+            dataGridView1.Columns[0].HeaderText = "Work Order";
+            dataGridView1.Columns[1].HeaderText = "Work Order Description";
         }
         private void tbimport_Click(object sender, EventArgs e)
         {
@@ -40,15 +42,18 @@ namespace PayrollProcess
         }
 
         bool ValidateData()
-        {
+        { 
+            
             List<string> vals = new List<string>();
             {
+
+                int TimesheetID = db.Timesheets.OrderByDescending(i => i.PayNoYear).Select(i => i.TimesheetID).FirstOrDefault();
                 var query =
             (from c in db.TimesheetDatas
-             where c.job!=null  && !(from o in db.Jobs
+             where c.TimesheetID==TimesheetID &&  c.job!=null  && !(from o in db.Jobs
                      select o.JobCode).Contains(c.job)
              select c.job).ToList();
-
+                int cnt = 0;
                 string ss;
                 if (query.Count() == 0)
                     ;// MessageBox.Show("Paycomponent code looks ok");
@@ -58,10 +63,16 @@ namespace PayrollProcess
                     ss = "The following job codes are in Employee Timesheet but not in the job file: ";
                     foreach (var item in query)
                     {
-                        ss = ss + item.ToString() + ", ";
+                        if (item != "")
+                        {
+                            ss = ss + item.ToString() + ", ";
+                            cnt++;
+                        }
                     }
-                    vals.Add(ss);
+                    if (cnt > 0)
+                        vals.Add(ss);
                 }
+
             }
             {
                 var query =

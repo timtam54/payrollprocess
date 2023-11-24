@@ -412,12 +412,11 @@ Hopefully re-importing last week will fix
 
         private void btnImport_Click(object sender, EventArgs e)
         {
-            //if (MessageBox.Show("Please confirm headers are mapped correctly?", "Mapped", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                RemoveHeader();
+            this.Cursor = Cursors.WaitCursor;
+            RemoveHeader();
                 ClearEA();
                 Migrate();
-            }
+            this.Cursor = Cursors.Default;
         }
     }
 }

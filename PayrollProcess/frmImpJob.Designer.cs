@@ -1577,7 +1577,7 @@
             this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.panel1);
             this.Name = "frmImpJob";
-            this.Text = "frmImpJob";
+            this.Text = "Import Work Order Numbers";
             this.Load += new System.EventHandler(this.frmImpJob_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -87,15 +87,21 @@ namespace PayrollProcess
             public string JobCodes { get; set; }
             public string Ledger { get; set; }
             public int Count { get; set; }
+
+            public bool NotInMasterError { get; set; }
         }
         List<JobLedger> jls;
         private void FrmLedgerJobNoMapping_Load(object sender, EventArgs e)
         {
             DataClasses1DataContext db = new DataClasses1DataContext(Form1.ConString);
-            List<JobEmp> jle = (from td in db.TimesheetDatas join th in db.Timesheets on td.TimesheetID equals th.TimesheetID where th.PayNoYear == PayPeriod group th by new JobEmp { JobCodes = td.job, Emp= th.StaffID } into newGroup select new JobEmp { JobCodes = newGroup.Key.JobCodes, Emp=newGroup.Key.Emp }).ToList();
-            jls = (from je in jle group je by je.JobCodes into newgroup select new JobLedger{ JobCodes=newgroup.Key,Count=newgroup.Count()  }).ToList();
+            List<JobEmp> jle = (from td in db.TimesheetDatas join th in db.Timesheets on td.TimesheetID equals th.TimesheetID where th.PayNoYear == PayPeriod group th by new JobEmp { JobCodes = td.job, Emp = th.StaffID } into newGroup select new JobEmp { JobCodes = newGroup.Key.JobCodes, Emp = newGroup.Key.Emp }).ToList();
+            jls = (from je in jle group je by je.JobCodes into newgroup select new JobLedger { JobCodes = newgroup.Key, Count = newgroup.Count() }).ToList();
             foreach (JobLedger jl in jls)
-                jl.Ledger= frmReportT1PayImport.GetLedger(jl.JobCodes);
+            {
+                var res = frmReportT1PayImport.GetLedger(jl.JobCodes);
+                jl.Ledger = res.Ledger;
+                jl.NotInMasterError = res.NotInMasterError;
+            }
             JobLedgerBindingSource.DataSource = jls;
             this.reportViewer1.RefreshReport();
         }

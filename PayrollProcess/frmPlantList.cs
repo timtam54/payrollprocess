@@ -34,6 +34,10 @@ namespace PayrollProcess
             bs.DataSource = emp;
             dataGridView1.DataSource = bs;
             bindingNavigator1.BindingSource = bs;
+
+            dataGridView1.Columns[0].HeaderText = "Asset";
+            dataGridView1.Columns[1].HeaderText = "Asset";
+            dataGridView1.Columns[2].HeaderText = "Description";
         }
 
         private void tbimport_Click(object sender, EventArgs e)
@@ -51,9 +55,11 @@ namespace PayrollProcess
         {
             List<string> vals = new List<string>();
             {
+                int TimesheetID = db.Timesheets.OrderByDescending(i => i.PayNoYear).Select(i => i.TimesheetID).FirstOrDefault();
+
                 var query =
             (from c in db.TimesheetDatas
-             where c.PlantNo != null && !(from o in db.Plants
+             where c.TimesheetID==TimesheetID && c.PlantNo != null && !(from o in db.Plants
                                       select o.PlantSource).Contains(c.PlantNo.ToString())
              select c.PlantNo).ToList();
 
@@ -62,12 +68,19 @@ namespace PayrollProcess
                     ;// MessageBox.Show("Paycomponent code looks ok");
                 else
                 {
-                    //                    Issues = true;
-                    ss = "The following job codes are in Employee Timesheet but not in the job file: ";
+                    int cnt = 0;
+
+                    ss = "The following plant codes are in Employee Timesheet but not in the plant list file: ";
+
                     foreach (var item in query)
                     {
-                        ss = ss + item.ToString() + ", ";
+                        if (item != null)
+                        {
+                            ss = ss + item.ToString() + ", ";
+                            cnt++;
+                        }
                     }
+                    if (cnt>0)
                     vals.Add(ss);
                 }
             }

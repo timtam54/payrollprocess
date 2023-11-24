@@ -79,6 +79,8 @@ namespace PayrollProcess
             {
                 openFileDialog1.Filter = "XLSX Files(*.xlsx)|*.xlsx";//|Excel Files(.xlsx)|*.xlsx|Excel Files(.xls)|*.xls| Excel Files(*.xlsm)|*.xlsm
                 openFileDialog1.ShowDialog();
+                if (openFileDialog1.FileName == "openFileDialog1")
+                    openFileDialog1.FileName = "";
                 if (openFileDialog1.FileName == "")
                 {
                     MessageBox.Show("No file was selected.. action has been cancelled.");
@@ -342,9 +344,12 @@ namespace PayrollProcess
 
         private void btnImport_Click_1(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             RemoveHeader();
             ClearEA();
             Migrate();
+            this.Cursor = Cursors.Default;
+
         }
     }
 }

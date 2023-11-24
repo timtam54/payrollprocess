@@ -60,6 +60,7 @@
             this.tsbEventLog = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbHelp = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cboZ = new System.Windows.Forms.ComboBox();
             this.cboY = new System.Windows.Forms.ComboBox();
@@ -140,7 +141,6 @@
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.tssPerc = new System.Windows.Forms.ToolStripStatusLabel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.excelImportDS1)).BeginInit();
@@ -172,7 +172,7 @@
             this.toolStripSeparator5});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1573, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1028, 31);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -180,13 +180,13 @@
             // 
             this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(54, 28);
+            this.toolStripLabel1.Size = new System.Drawing.Size(43, 28);
             this.toolStripLabel1.Text = "Period";
             // 
             // cboPayPeriod
             // 
             this.cboPayPeriod.Name = "cboPayPeriod";
-            this.cboPayPeriod.Size = new System.Drawing.Size(332, 31);
+            this.cboPayPeriod.Size = new System.Drawing.Size(250, 31);
             // 
             // toolStripSeparator8
             // 
@@ -197,13 +197,13 @@
             // 
             this.tsbEmp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.tsbEmp.Name = "tsbEmp";
-            this.tsbEmp.Size = new System.Drawing.Size(77, 28);
+            this.tsbEmp.Size = new System.Drawing.Size(61, 28);
             this.tsbEmp.Text = "Employee";
             // 
             // tsbCboEmp
             // 
             this.tsbCboEmp.Name = "tsbCboEmp";
-            this.tsbCboEmp.Size = new System.Drawing.Size(265, 31);
+            this.tsbCboEmp.Size = new System.Drawing.Size(200, 31);
             // 
             // toolStripDropDownButton3
             // 
@@ -213,21 +213,21 @@
             this.toolStripDropDownButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton3.Image")));
             this.toolStripDropDownButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton3.Name = "toolStripDropDownButton3";
-            this.toolStripDropDownButton3.Size = new System.Drawing.Size(184, 28);
+            this.toolStripDropDownButton3.Size = new System.Drawing.Size(153, 28);
             this.toolStripDropDownButton3.Text = "Import XL Timesheet";
             this.toolStripDropDownButton3.Click += new System.EventHandler(this.toolStripDropDownButton3_Click);
             // 
             // xLTimesheetToolStripMenuItem
             // 
             this.xLTimesheetToolStripMenuItem.Name = "xLTimesheetToolStripMenuItem";
-            this.xLTimesheetToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
+            this.xLTimesheetToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.xLTimesheetToolStripMenuItem.Text = "1 XL Timesheet";
             this.xLTimesheetToolStripMenuItem.Click += new System.EventHandler(this.xLTimesheetToolStripMenuItem_Click);
             // 
             // entirePayPeriodFolderToolStripMenuItem
             // 
             this.entirePayPeriodFolderToolStripMenuItem.Name = "entirePayPeriodFolderToolStripMenuItem";
-            this.entirePayPeriodFolderToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
+            this.entirePayPeriodFolderToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.entirePayPeriodFolderToolStripMenuItem.Text = "Entire Pay Period Folder";
             this.entirePayPeriodFolderToolStripMenuItem.Click += new System.EventHandler(this.entirePayPeriodFolderToolStripMenuItem_Click);
             // 
@@ -251,62 +251,62 @@
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(55, 28);
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(44, 28);
             this.toolStripDropDownButton1.Text = "Data";
             // 
             // employeesToolStripMenuItem
             // 
             this.employeesToolStripMenuItem.Name = "employeesToolStripMenuItem";
-            this.employeesToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
+            this.employeesToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.employeesToolStripMenuItem.Text = "Employees";
             this.employeesToolStripMenuItem.Click += new System.EventHandler(this.employeesToolStripMenuItem_Click);
             // 
             // employeeAllowancesToolStripMenuItem
             // 
             this.employeeAllowancesToolStripMenuItem.Name = "employeeAllowancesToolStripMenuItem";
-            this.employeeAllowancesToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
+            this.employeeAllowancesToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.employeeAllowancesToolStripMenuItem.Text = "Entitlements/Allowances";
             this.employeeAllowancesToolStripMenuItem.Click += new System.EventHandler(this.employeeAllowancesToolStripMenuItem_Click);
             // 
             // payComponentToolStripMenuItem
             // 
             this.payComponentToolStripMenuItem.Name = "payComponentToolStripMenuItem";
-            this.payComponentToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
+            this.payComponentToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.payComponentToolStripMenuItem.Text = "Pay Component";
             this.payComponentToolStripMenuItem.Click += new System.EventHandler(this.payComponentToolStripMenuItem_Click);
             // 
             // classToolStripMenuItem
             // 
             this.classToolStripMenuItem.Name = "classToolStripMenuItem";
-            this.classToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
+            this.classToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.classToolStripMenuItem.Text = "Class";
             this.classToolStripMenuItem.Click += new System.EventHandler(this.classToolStripMenuItem_Click);
             // 
             // jobCodesToolStripMenuItem
             // 
             this.jobCodesToolStripMenuItem.Name = "jobCodesToolStripMenuItem";
-            this.jobCodesToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
-            this.jobCodesToolStripMenuItem.Text = "Job Codes";
+            this.jobCodesToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.jobCodesToolStripMenuItem.Text = "Work Order";
             this.jobCodesToolStripMenuItem.Click += new System.EventHandler(this.jobCodesToolStripMenuItem_Click);
             // 
             // tsbPlant
             // 
             this.tsbPlant.Name = "tsbPlant";
-            this.tsbPlant.Size = new System.Drawing.Size(255, 26);
+            this.tsbPlant.Size = new System.Drawing.Size(205, 22);
             this.tsbPlant.Text = "Plant";
             this.tsbPlant.Click += new System.EventHandler(this.tsbPlant_Click);
             // 
             // payPeriodToolStripMenuItem
             // 
             this.payPeriodToolStripMenuItem.Name = "payPeriodToolStripMenuItem";
-            this.payPeriodToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
+            this.payPeriodToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.payPeriodToolStripMenuItem.Text = "Pay Period";
             this.payPeriodToolStripMenuItem.Click += new System.EventHandler(this.payPeriodToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
@@ -327,41 +327,41 @@
             this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
             this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(74, 28);
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(60, 28);
             this.toolStripDropDownButton2.Text = "Reports";
             // 
             // timesheetToolStripMenuItem
             // 
             this.timesheetToolStripMenuItem.Name = "timesheetToolStripMenuItem";
-            this.timesheetToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
+            this.timesheetToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.timesheetToolStripMenuItem.Text = "Raw Timesheet";
             this.timesheetToolStripMenuItem.Click += new System.EventHandler(this.timesheetToolStripMenuItem_Click);
             // 
             // t1ImportWorkLeaveToolStripMenuItem
             // 
             this.t1ImportWorkLeaveToolStripMenuItem.Name = "t1ImportWorkLeaveToolStripMenuItem";
-            this.t1ImportWorkLeaveToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
+            this.t1ImportWorkLeaveToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.t1ImportWorkLeaveToolStripMenuItem.Text = "T1 Import Work / Leave";
             this.t1ImportWorkLeaveToolStripMenuItem.Click += new System.EventHandler(this.t1ImportWorkLeaveToolStripMenuItem_Click);
             // 
             // t1ImportPlantToolStripMenuItem
             // 
             this.t1ImportPlantToolStripMenuItem.Name = "t1ImportPlantToolStripMenuItem";
-            this.t1ImportPlantToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
+            this.t1ImportPlantToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.t1ImportPlantToolStripMenuItem.Text = "T1 Import Plant";
             this.t1ImportPlantToolStripMenuItem.Click += new System.EventHandler(this.t1ImportPlantToolStripMenuItem_Click);
             // 
             // errorReportToolStripMenuItem
             // 
             this.errorReportToolStripMenuItem.Name = "errorReportToolStripMenuItem";
-            this.errorReportToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
+            this.errorReportToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.errorReportToolStripMenuItem.Text = "Import Error";
             this.errorReportToolStripMenuItem.Click += new System.EventHandler(this.errorReportToolStripMenuItem_Click);
             // 
             // ledgerJobCodeMapToolStripMenuItem
             // 
             this.ledgerJobCodeMapToolStripMenuItem.Name = "ledgerJobCodeMapToolStripMenuItem";
-            this.ledgerJobCodeMapToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
+            this.ledgerJobCodeMapToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.ledgerJobCodeMapToolStripMenuItem.Text = "Ledger / Job Code Map";
             this.ledgerJobCodeMapToolStripMenuItem.Click += new System.EventHandler(this.LedgerJobCodeMapToolStripMenuItem_Click);
             // 
@@ -371,7 +371,7 @@
             "Normal Mode (Faster)",
             "Log Events (Slower)"});
             this.tsbNormal_Event.Name = "tsbNormal_Event";
-            this.tsbNormal_Event.Size = new System.Drawing.Size(199, 31);
+            this.tsbNormal_Event.Size = new System.Drawing.Size(150, 31);
             // 
             // tsbEventLog
             // 
@@ -379,7 +379,7 @@
             this.tsbEventLog.Image = ((System.Drawing.Image)(resources.GetObject("tsbEventLog.Image")));
             this.tsbEventLog.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEventLog.Name = "tsbEventLog";
-            this.tsbEventLog.Size = new System.Drawing.Size(78, 28);
+            this.tsbEventLog.Size = new System.Drawing.Size(63, 19);
             this.tsbEventLog.Text = "Event Log";
             this.tsbEventLog.Visible = false;
             this.tsbEventLog.Click += new System.EventHandler(this.tsbEventLog_Click);
@@ -394,9 +394,14 @@
             this.tsbHelp.Image = ((System.Drawing.Image)(resources.GetObject("tsbHelp.Image")));
             this.tsbHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbHelp.Name = "tsbHelp";
-            this.tsbHelp.Size = new System.Drawing.Size(69, 28);
+            this.tsbHelp.Size = new System.Drawing.Size(60, 28);
             this.tsbHelp.Text = "Help";
             this.tsbHelp.Click += new System.EventHandler(this.tsbHelp_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 31);
             // 
             // panel1
             // 
@@ -431,263 +436,234 @@
             this.panel1.Controls.Add(this.cboA);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 31);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1573, 41);
+            this.panel1.Size = new System.Drawing.Size(1028, 33);
             this.panel1.TabIndex = 8;
             this.panel1.Visible = false;
             // 
             // cboZ
             // 
             this.cboZ.FormattingEnabled = true;
-            this.cboZ.Location = new System.Drawing.Point(1040, 9);
-            this.cboZ.Margin = new System.Windows.Forms.Padding(4);
+            this.cboZ.Location = new System.Drawing.Point(780, 7);
             this.cboZ.Name = "cboZ";
-            this.cboZ.Size = new System.Drawing.Size(160, 24);
+            this.cboZ.Size = new System.Drawing.Size(121, 21);
             this.cboZ.TabIndex = 30;
             // 
             // cboY
             // 
             this.cboY.FormattingEnabled = true;
-            this.cboY.Location = new System.Drawing.Point(1057, 9);
-            this.cboY.Margin = new System.Windows.Forms.Padding(4);
+            this.cboY.Location = new System.Drawing.Point(793, 7);
             this.cboY.Name = "cboY";
-            this.cboY.Size = new System.Drawing.Size(160, 24);
+            this.cboY.Size = new System.Drawing.Size(121, 21);
             this.cboY.TabIndex = 29;
             this.cboY.SelectedIndexChanged += new System.EventHandler(this.cboY_SelectedIndexChanged);
             // 
             // cboX
             // 
             this.cboX.FormattingEnabled = true;
-            this.cboX.Location = new System.Drawing.Point(1047, 9);
-            this.cboX.Margin = new System.Windows.Forms.Padding(4);
+            this.cboX.Location = new System.Drawing.Point(785, 7);
             this.cboX.Name = "cboX";
-            this.cboX.Size = new System.Drawing.Size(160, 24);
+            this.cboX.Size = new System.Drawing.Size(121, 21);
             this.cboX.TabIndex = 28;
             // 
             // cboW
             // 
             this.cboW.FormattingEnabled = true;
-            this.cboW.Location = new System.Drawing.Point(1045, 9);
-            this.cboW.Margin = new System.Windows.Forms.Padding(4);
+            this.cboW.Location = new System.Drawing.Point(784, 7);
             this.cboW.Name = "cboW";
-            this.cboW.Size = new System.Drawing.Size(160, 24);
+            this.cboW.Size = new System.Drawing.Size(121, 21);
             this.cboW.TabIndex = 27;
             // 
             // cboV
             // 
             this.cboV.FormattingEnabled = true;
-            this.cboV.Location = new System.Drawing.Point(1031, 9);
-            this.cboV.Margin = new System.Windows.Forms.Padding(4);
+            this.cboV.Location = new System.Drawing.Point(773, 7);
             this.cboV.Name = "cboV";
-            this.cboV.Size = new System.Drawing.Size(160, 24);
+            this.cboV.Size = new System.Drawing.Size(121, 21);
             this.cboV.TabIndex = 25;
             // 
             // cboU
             // 
             this.cboU.FormattingEnabled = true;
-            this.cboU.Location = new System.Drawing.Point(1671, 9);
-            this.cboU.Margin = new System.Windows.Forms.Padding(4);
+            this.cboU.Location = new System.Drawing.Point(1253, 7);
             this.cboU.Name = "cboU";
-            this.cboU.Size = new System.Drawing.Size(160, 24);
+            this.cboU.Size = new System.Drawing.Size(121, 21);
             this.cboU.TabIndex = 24;
             // 
             // cboT
             // 
             this.cboT.FormattingEnabled = true;
-            this.cboT.Location = new System.Drawing.Point(1628, 9);
-            this.cboT.Margin = new System.Windows.Forms.Padding(4);
+            this.cboT.Location = new System.Drawing.Point(1221, 7);
             this.cboT.Name = "cboT";
-            this.cboT.Size = new System.Drawing.Size(160, 24);
+            this.cboT.Size = new System.Drawing.Size(121, 21);
             this.cboT.TabIndex = 23;
             // 
             // cboS
             // 
             this.cboS.FormattingEnabled = true;
-            this.cboS.Location = new System.Drawing.Point(1597, 9);
-            this.cboS.Margin = new System.Windows.Forms.Padding(4);
+            this.cboS.Location = new System.Drawing.Point(1198, 7);
             this.cboS.Name = "cboS";
-            this.cboS.Size = new System.Drawing.Size(160, 24);
+            this.cboS.Size = new System.Drawing.Size(121, 21);
             this.cboS.TabIndex = 22;
             // 
             // cboR
             // 
             this.cboR.FormattingEnabled = true;
-            this.cboR.Location = new System.Drawing.Point(1555, 9);
-            this.cboR.Margin = new System.Windows.Forms.Padding(4);
+            this.cboR.Location = new System.Drawing.Point(1166, 7);
             this.cboR.Name = "cboR";
-            this.cboR.Size = new System.Drawing.Size(160, 24);
+            this.cboR.Size = new System.Drawing.Size(121, 21);
             this.cboR.TabIndex = 21;
             // 
             // cboQ
             // 
             this.cboQ.FormattingEnabled = true;
-            this.cboQ.Location = new System.Drawing.Point(1521, 9);
-            this.cboQ.Margin = new System.Windows.Forms.Padding(4);
+            this.cboQ.Location = new System.Drawing.Point(1141, 7);
             this.cboQ.Name = "cboQ";
-            this.cboQ.Size = new System.Drawing.Size(160, 24);
+            this.cboQ.Size = new System.Drawing.Size(121, 21);
             this.cboQ.TabIndex = 20;
             // 
             // cboP
             // 
             this.cboP.FormattingEnabled = true;
-            this.cboP.Location = new System.Drawing.Point(1471, 9);
-            this.cboP.Margin = new System.Windows.Forms.Padding(4);
+            this.cboP.Location = new System.Drawing.Point(1103, 7);
             this.cboP.Name = "cboP";
-            this.cboP.Size = new System.Drawing.Size(160, 24);
+            this.cboP.Size = new System.Drawing.Size(121, 21);
             this.cboP.TabIndex = 19;
             // 
             // cboO
             // 
             this.cboO.FormattingEnabled = true;
-            this.cboO.Location = new System.Drawing.Point(1428, 9);
-            this.cboO.Margin = new System.Windows.Forms.Padding(4);
+            this.cboO.Location = new System.Drawing.Point(1071, 7);
             this.cboO.Name = "cboO";
-            this.cboO.Size = new System.Drawing.Size(160, 24);
+            this.cboO.Size = new System.Drawing.Size(121, 21);
             this.cboO.TabIndex = 18;
             // 
             // cboN
             // 
             this.cboN.FormattingEnabled = true;
-            this.cboN.Location = new System.Drawing.Point(1333, 9);
-            this.cboN.Margin = new System.Windows.Forms.Padding(4);
+            this.cboN.Location = new System.Drawing.Point(1000, 7);
             this.cboN.Name = "cboN";
-            this.cboN.Size = new System.Drawing.Size(160, 24);
+            this.cboN.Size = new System.Drawing.Size(121, 21);
             this.cboN.TabIndex = 17;
             // 
             // cboM
             // 
             this.cboM.FormattingEnabled = true;
-            this.cboM.Location = new System.Drawing.Point(1236, 9);
-            this.cboM.Margin = new System.Windows.Forms.Padding(4);
+            this.cboM.Location = new System.Drawing.Point(927, 7);
             this.cboM.Name = "cboM";
-            this.cboM.Size = new System.Drawing.Size(160, 24);
+            this.cboM.Size = new System.Drawing.Size(121, 21);
             this.cboM.TabIndex = 16;
             // 
             // cboL
             // 
             this.cboL.FormattingEnabled = true;
-            this.cboL.Location = new System.Drawing.Point(1149, 9);
-            this.cboL.Margin = new System.Windows.Forms.Padding(4);
+            this.cboL.Location = new System.Drawing.Point(862, 7);
             this.cboL.Name = "cboL";
-            this.cboL.Size = new System.Drawing.Size(160, 24);
+            this.cboL.Size = new System.Drawing.Size(121, 21);
             this.cboL.TabIndex = 15;
             // 
             // cboK
             // 
             this.cboK.FormattingEnabled = true;
-            this.cboK.Location = new System.Drawing.Point(1031, 9);
-            this.cboK.Margin = new System.Windows.Forms.Padding(4);
+            this.cboK.Location = new System.Drawing.Point(773, 7);
             this.cboK.Name = "cboK";
-            this.cboK.Size = new System.Drawing.Size(160, 24);
+            this.cboK.Size = new System.Drawing.Size(121, 21);
             this.cboK.TabIndex = 14;
             // 
             // cboJJ
             // 
             this.cboJJ.FormattingEnabled = true;
-            this.cboJJ.Location = new System.Drawing.Point(881, 9);
-            this.cboJJ.Margin = new System.Windows.Forms.Padding(4);
+            this.cboJJ.Location = new System.Drawing.Point(661, 7);
             this.cboJJ.Name = "cboJJ";
-            this.cboJJ.Size = new System.Drawing.Size(160, 24);
+            this.cboJJ.Size = new System.Drawing.Size(121, 21);
             this.cboJJ.TabIndex = 13;
             // 
             // cboI
             // 
             this.cboI.FormattingEnabled = true;
-            this.cboI.Location = new System.Drawing.Point(765, 9);
-            this.cboI.Margin = new System.Windows.Forms.Padding(4);
+            this.cboI.Location = new System.Drawing.Point(574, 7);
             this.cboI.Name = "cboI";
-            this.cboI.Size = new System.Drawing.Size(160, 24);
+            this.cboI.Size = new System.Drawing.Size(121, 21);
             this.cboI.TabIndex = 12;
             // 
             // cboHH
             // 
             this.cboHH.FormattingEnabled = true;
-            this.cboHH.Location = new System.Drawing.Point(672, 9);
-            this.cboHH.Margin = new System.Windows.Forms.Padding(4);
+            this.cboHH.Location = new System.Drawing.Point(504, 7);
             this.cboHH.Name = "cboHH";
-            this.cboHH.Size = new System.Drawing.Size(160, 24);
+            this.cboHH.Size = new System.Drawing.Size(121, 21);
             this.cboHH.TabIndex = 11;
             // 
             // cboGG
             // 
             this.cboGG.FormattingEnabled = true;
-            this.cboGG.Location = new System.Drawing.Point(573, 9);
-            this.cboGG.Margin = new System.Windows.Forms.Padding(4);
+            this.cboGG.Location = new System.Drawing.Point(430, 7);
             this.cboGG.Name = "cboGG";
-            this.cboGG.Size = new System.Drawing.Size(160, 24);
+            this.cboGG.Size = new System.Drawing.Size(121, 21);
             this.cboGG.TabIndex = 10;
             // 
             // dboI
             // 
             this.dboI.FormattingEnabled = true;
-            this.dboI.Location = new System.Drawing.Point(1337, 48);
-            this.dboI.Margin = new System.Windows.Forms.Padding(4);
+            this.dboI.Location = new System.Drawing.Point(1003, 39);
             this.dboI.Name = "dboI";
-            this.dboI.Size = new System.Drawing.Size(160, 24);
+            this.dboI.Size = new System.Drawing.Size(121, 21);
             this.dboI.TabIndex = 8;
             // 
             // cboH
             // 
             this.cboH.FormattingEnabled = true;
-            this.cboH.Location = new System.Drawing.Point(1181, 48);
-            this.cboH.Margin = new System.Windows.Forms.Padding(4);
+            this.cboH.Location = new System.Drawing.Point(886, 39);
             this.cboH.Name = "cboH";
-            this.cboH.Size = new System.Drawing.Size(160, 24);
+            this.cboH.Size = new System.Drawing.Size(121, 21);
             this.cboH.TabIndex = 7;
             // 
             // cboF
             // 
             this.cboF.FormattingEnabled = true;
-            this.cboF.Location = new System.Drawing.Point(500, 9);
-            this.cboF.Margin = new System.Windows.Forms.Padding(4);
+            this.cboF.Location = new System.Drawing.Point(375, 7);
             this.cboF.Name = "cboF";
-            this.cboF.Size = new System.Drawing.Size(160, 24);
+            this.cboF.Size = new System.Drawing.Size(121, 21);
             this.cboF.TabIndex = 5;
             // 
             // cboE
             // 
             this.cboE.FormattingEnabled = true;
-            this.cboE.Location = new System.Drawing.Point(409, 9);
-            this.cboE.Margin = new System.Windows.Forms.Padding(4);
+            this.cboE.Location = new System.Drawing.Point(307, 7);
             this.cboE.Name = "cboE";
-            this.cboE.Size = new System.Drawing.Size(160, 24);
+            this.cboE.Size = new System.Drawing.Size(121, 21);
             this.cboE.TabIndex = 4;
             // 
             // cboD
             // 
             this.cboD.FormattingEnabled = true;
-            this.cboD.Location = new System.Drawing.Point(308, 9);
-            this.cboD.Margin = new System.Windows.Forms.Padding(4);
+            this.cboD.Location = new System.Drawing.Point(231, 7);
             this.cboD.Name = "cboD";
-            this.cboD.Size = new System.Drawing.Size(160, 24);
+            this.cboD.Size = new System.Drawing.Size(121, 21);
             this.cboD.TabIndex = 3;
             // 
             // cboC
             // 
             this.cboC.FormattingEnabled = true;
-            this.cboC.Location = new System.Drawing.Point(212, 9);
-            this.cboC.Margin = new System.Windows.Forms.Padding(4);
+            this.cboC.Location = new System.Drawing.Point(159, 7);
             this.cboC.Name = "cboC";
-            this.cboC.Size = new System.Drawing.Size(160, 24);
+            this.cboC.Size = new System.Drawing.Size(121, 21);
             this.cboC.TabIndex = 2;
             // 
             // cboB
             // 
             this.cboB.FormattingEnabled = true;
-            this.cboB.Location = new System.Drawing.Point(143, 9);
-            this.cboB.Margin = new System.Windows.Forms.Padding(4);
+            this.cboB.Location = new System.Drawing.Point(107, 7);
             this.cboB.Name = "cboB";
-            this.cboB.Size = new System.Drawing.Size(160, 24);
+            this.cboB.Size = new System.Drawing.Size(121, 21);
             this.cboB.TabIndex = 1;
             // 
             // cboA
             // 
             this.cboA.FormattingEnabled = true;
-            this.cboA.Location = new System.Drawing.Point(60, 9);
-            this.cboA.Margin = new System.Windows.Forms.Padding(4);
+            this.cboA.Location = new System.Drawing.Point(45, 7);
             this.cboA.Name = "cboA";
-            this.cboA.Size = new System.Drawing.Size(160, 24);
+            this.cboA.Size = new System.Drawing.Size(121, 21);
             this.cboA.TabIndex = 0;
             // 
             // excelImportDS1
@@ -722,21 +698,21 @@
             this.lblExcelFile,
             this.toolStripSeparator1,
             this.tsbTabName});
-            this.bindingNavigator1.Location = new System.Drawing.Point(0, 72);
+            this.bindingNavigator1.Location = new System.Drawing.Point(0, 64);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(1573, 31);
+            this.bindingNavigator1.Size = new System.Drawing.Size(1028, 31);
             this.bindingNavigator1.TabIndex = 9;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 28);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 28);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
@@ -746,7 +722,7 @@
             this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(29, 28);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(28, 28);
             this.bindingNavigatorMoveFirstItem.Text = "Move first";
             // 
             // bindingNavigatorMovePreviousItem
@@ -755,7 +731,7 @@
             this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(29, 28);
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(28, 28);
             this.bindingNavigatorMovePreviousItem.Text = "Move previous";
             // 
             // bindingNavigatorSeparator
@@ -769,7 +745,7 @@
             this.bindingNavigatorPositionItem.AutoSize = false;
             this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(65, 27);
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
@@ -784,7 +760,7 @@
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(29, 28);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(28, 28);
             this.bindingNavigatorMoveNextItem.Text = "Move next";
             // 
             // bindingNavigatorMoveLastItem
@@ -793,7 +769,7 @@
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(29, 28);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(28, 28);
             this.bindingNavigatorMoveLastItem.Text = "Move last";
             // 
             // bindingNavigatorSeparator2
@@ -809,7 +785,7 @@
             // tsTitle
             // 
             this.tsTitle.Name = "tsTitle";
-            this.tsTitle.Size = new System.Drawing.Size(21, 28);
+            this.tsTitle.Size = new System.Drawing.Size(17, 28);
             this.tsTitle.Text = "--";
             // 
             // lblExcelFile
@@ -827,7 +803,7 @@
             // tsbTabName
             // 
             this.tsbTabName.Name = "tsbTabName";
-            this.tsbTabName.Size = new System.Drawing.Size(92, 28);
+            this.tsbTabName.Size = new System.Drawing.Size(74, 28);
             this.tsbTabName.Text = "--tabname--";
             // 
             // dataGridView1
@@ -866,12 +842,11 @@
             this.ColumnZ});
             this.dataGridView1.DataSource = this.bindingSource1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 103);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 95);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1573, 451);
+            this.dataGridView1.Size = new System.Drawing.Size(1028, 355);
             this.dataGridView1.TabIndex = 10;
             // 
             // columnADataGridViewTextBoxColumn
@@ -1127,51 +1102,44 @@
             this.toolStripStatusLabel1,
             this.toolStripProgressBar1,
             this.tssPerc});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 528);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1573, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1028, 22);
             this.statusStrip1.TabIndex = 11;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(65, 20);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(52, 17);
             this.toolStripStatusLabel1.Text = "Progress";
             // 
             // toolStripProgressBar1
             // 
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(1000, 18);
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(750, 16);
             // 
             // tssPerc
             // 
             this.tssPerc.Name = "tssPerc";
-            this.tssPerc.Size = new System.Drawing.Size(12, 20);
+            this.tssPerc.Size = new System.Drawing.Size(10, 17);
             this.tssPerc.Text = ".";
             // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 31);
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1573, 554);
+            this.ClientSize = new System.Drawing.Size(1028, 450);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Payroll Export";
             this.Load += new System.EventHandler(this.Form1_Load);

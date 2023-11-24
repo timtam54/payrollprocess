@@ -173,7 +173,7 @@ namespace PayrollProcess
             sb = new StringBuilder();
 
             ss = "";
-            sb.AppendLine("FORMAT TIMESHEET , STANDARD 1.0");
+            sb.AppendLine("\"FORMAT TIMESHEET , STANDARD 1.0\"");
             foreach (DataColumnMap dcm in dcms)
             {
                 if (ss != "")

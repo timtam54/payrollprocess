@@ -405,11 +405,12 @@ namespace PayrollProcess
 
         private void btnImport_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             RemoveHeader();
             ClearEA();
 
             Migrate();
-
+            this.Cursor = Cursors.Default;
         }
     }
 }

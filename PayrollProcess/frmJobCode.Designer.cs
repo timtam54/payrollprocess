@@ -189,9 +189,9 @@
             this.tbimport.Image = ((System.Drawing.Image)(resources.GetObject("tbimport.Image")));
             this.tbimport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tbimport.Name = "tbimport";
-            this.tbimport.Size = new System.Drawing.Size(198, 24);
-            this.tbimport.Text = "Import Job/Work Order from T1";
-            this.tbimport.ToolTipText = "Import Job/Work Order from T1";
+            this.tbimport.Size = new System.Drawing.Size(227, 24);
+            this.tbimport.Text = "Import Work Order Numbers from T1";
+            this.tbimport.ToolTipText = "Import Work Order Numbers from T1";
             this.tbimport.Click += new System.EventHandler(this.tbimport_Click);
             // 
             // toolStripSeparator1
@@ -235,7 +235,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.bindingNavigator1);
             this.Name = "frmJobCode";
-            this.Text = "frmJobCode";
+            this.Text = "Work Order Numbers";
             this.Load += new System.EventHandler(this.frmJobCode_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();

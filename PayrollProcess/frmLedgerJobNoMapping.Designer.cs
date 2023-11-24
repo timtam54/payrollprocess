@@ -30,10 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.JobLedgerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.JobLedgerBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // JobLedgerBindingSource
+            // 
+            this.JobLedgerBindingSource.DataSource = typeof(PayrollProcess.frmLedgerJobNoMapping.JobLedger);
             // 
             // reportViewer1
             // 
@@ -47,10 +51,6 @@
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
-            // 
-            // JobLedgerBindingSource
-            // 
-            this.JobLedgerBindingSource.DataSource = typeof(PayrollProcess.frmLedgerJobNoMapping.JobLedger);
             // 
             // frmLedgerJobNoMapping
             // 

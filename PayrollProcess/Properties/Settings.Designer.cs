@@ -27,7 +27,28 @@ namespace PayrollProcess.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=sql2014;Initial Catalog=CTRCTSPayrollDB;Integrated Security=False;Con" +
+            "nect Timeout=30;UID=PayrollApp;PWD=RQkTuemu;")]
+        public string CTRCTSPayrollDBConnectionString1oldold {
+            get {
+                return ((string)(this["CTRCTSPayrollDBConnectionString1oldold"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=svrsql001;Initial Catalog=CTRCTSPayroll;Integrated Security=False;Con" +
             "nect Timeout=30;UID=payrollDB;PWD=Payroll2023;")]
+        public string CTRCTSPayrollDBConnectionString1new {
+            get {
+                return ((string)(this["CTRCTSPayrollDBConnectionString1new"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=CTRCTSPayrollDB;Integrated Security=true;")]
         public string CTRCTSPayrollDBConnectionString1 {
             get {
                 return ((string)(this["CTRCTSPayrollDBConnectionString1"]));

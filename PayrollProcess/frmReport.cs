@@ -174,7 +174,7 @@ namespace PayrollProcess
                 {
                     try
                     { 
-                    item.Ledger =frmReportT1PayImport.GetLedger(item.JobNo);
+                    item.Ledger =frmReportT1PayImport.GetLedger(item.JobNo).Ledger;
                     }
                     catch (Exception ex)
                     {

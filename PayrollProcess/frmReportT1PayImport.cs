@@ -128,7 +128,7 @@ namespace PayrollProcess
 
                 MainDS.DataTable1Row mrow = mainDS1.DataTable1.Where(i => i.TimeDesc == item.Time && i.EmpNo == item.StaffID && i.Code == item.Code && i.Period == item.Period && i.JobNo == item.JobNo && i.RowID == item.RowID && i.Allowance == item.Allowance).FirstOrDefault();
                 if (mrow == null)
-                    mainDS1.DataTable1.AddDataTable1Row(item.Period, item.StaffID, item.EmpName, item.ClassNo, item.ClassDesc, item.Code, item.CodeDesc, item.Time, item.Hours, item.JobNo, item.JobDesc, item.Allowance, item.AllowanceDesc, item.AllHours, item.RowID, item.Dte, GetLedger(item.JobNo));
+                    mainDS1.DataTable1.AddDataTable1Row(item.Period, item.StaffID, item.EmpName, item.ClassNo, item.ClassDesc, item.Code, item.CodeDesc, item.Time, item.Hours, item.JobNo, item.JobDesc, item.Allowance, item.AllowanceDesc, item.AllHours, item.RowID, item.Dte, GetLedger(item.JobNo).Ledger);
                 else
                 {
                     mrow.Hours += item.Hours;
@@ -271,7 +271,7 @@ namespace PayrollProcess
             sb = new StringBuilder();
 
             ss = "";
-            sb.AppendLine("FORMAT TIMESHEET , STANDARD 1.0");
+            sb.AppendLine("\"FORMAT TIMESHEET , STANDARD 1.0\"");
             foreach (DataColumnMap dcm in dcms)
             {
                 if (ss != "")
@@ -288,18 +288,13 @@ namespace PayrollProcess
 
                 if (!item.Leave)
                 {
-                    item.Ledger = GetLedger(item.JobNo);
+                    item.Ledger = GetLedger(item.JobNo).Ledger ;
                     ss = "";
                     try
                     {
                         foreach (DataColumnMap dcm in dcms)
                         {
-                            //if (dcm.datacolumnname != null)
-                            //{
-//                            if (dcm.datacolumnname.ToLower().Contains("pay"))
-  //                              ss += "";
-
-                            //}
+                           
                             if (dcm.datacolumnname == null)
                             {
                                 if (dcm.NullOutputVal != "NO")
@@ -493,16 +488,40 @@ namespace PayrollProcess
                 return _ljdefault;
             }
         }
-        public static string GetLedger(string JobNo)
+
+        public class LedgerError
         {
-                foreach (LedgerJob lj in ledgerjob)
+            public string Ledger { get; set; }
+            public bool NotInMasterError { get; set; }
+        }
+        public static LedgerError GetLedger(string JobNo)
+        {
+
+            LedgerError ret = new LedgerError();
+
+            if (JobNo == "")
+                ret.NotInMasterError = false;
+            else
+            {
+                if (!workorders.Contains(JobNo))
+                    ret.NotInMasterError = true;
+                else
+                    ret.NotInMasterError = false;
+            }
+            foreach (LedgerJob lj in ledgerjob)
             {
                 if (lj.JobNoFirstLetter.ToLower() == "null")
                 {
                     if (JobNo == null)
-                        return lj.Ledger;
+                    {
+                        ret.Ledger = lj.Ledger;
+                        return ret;
+                    }
                     if (JobNo == "")
-                        return lj.Ledger;
+                    {
+                        ret.Ledger = lj.Ledger;
+                        return ret;
+                    }
                 }
                 if (JobNo != null)
                 {
@@ -510,36 +529,26 @@ namespace PayrollProcess
                     {
                         if (JobNo.Substring(0, 1) == lj.JobNoFirstLetter)
                         {
-                            if (lj.Length=="" || lj.Length == "*")
-                                return lj.Ledger;
-
+                            if (lj.Length == "" || lj.Length == "*")
+                            {
+                                ret.Ledger = lj.Ledger;
+                                return ret;
+                            }
                             else if (JobNo.Length.ToString() == lj.Length)
-                                return lj.Ledger;
+                            {
+                                ret.Ledger = lj.Ledger;
+                                return ret;
+                            }
                         }
                     }
                 }
-                
+
 
             }
-            return ljdefault.Ledger;// "Not Mapped";
 
-            //return "Operations";
+            ret.Ledger = ljdefault.Ledger;
+            return ret;
 
-            //if (JobNo == null)
-            //    return "Normal";
-            //if (JobNo == "")
-            //    return "Normal";
-            //if (JobNo.Substring(0, 1) == "1")
-            //    return "Operations";
-            //if (JobNo.Substring(0, 1) == "3")
-            //    return "Capital";
-            //if (JobNo.Substring(0, 1) == "4")
-            //    return "Program and Events";
-            //if (JobNo.Substring(0, 1) == "9")
-            //    return "Fleet";
-            //if (JobNo.Substring(0, 1) == "6")
-            //    return "Water";
-            //return "Normal";
         }
 
         public static List<LedgerJob> _ledgerjob;
@@ -573,6 +582,25 @@ namespace PayrollProcess
             }
         }
 
+        public static List<string> _workorders;
+
+        public static List<string> workorders
+        {
+            get
+            {
+                if (_workorders == null)
+                {
+                    DataClasses1DataContext db = new DataClasses1DataContext(Form1.ConString);
+                    _workorders = new List<string>();
+                    var xx = db.Jobs.Select(i=>i.JobCode).ToList();
+                    foreach (var item in xx)
+                    {
+                        _workorders.Add(Convert.ToString(item));
+                    }
+                }
+                return _workorders;
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             DataColumnMap[] dcms = new DataColumnMap[] {new DataColumnMap( "LineType","L"),new DataColumnMap("T1EmpNo", "EmployeeId","EmpNoNotMapped")
@@ -607,7 +635,7 @@ namespace PayrollProcess
 
 
             sb = new StringBuilder();
-            sb.AppendLine("FORMAT LEAVE , STANDARD 1.0");
+            sb.AppendLine("\"FORMAT LEAVE , STANDARD 1.0\"");
             ss = "";
             foreach (DataColumnMap dcm in dcms)
             {
